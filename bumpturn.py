@@ -20,7 +20,7 @@ pl.start(pwm)
 
 
 
-def forward(pw):
+def forward(pwm):
     print "Speed up forward"
     for x in range (60000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm += .001
@@ -29,7 +29,7 @@ def forward(pw):
        #time.sleep(0.01)                           #sleep for 10u second
 
 
-def fstop(pw):
+def fstop(pwm):
     print "Change from forword to stop"
     for x in range (60000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm -= .001
@@ -37,7 +37,7 @@ def fstop(pw):
        pl.ChangeDutyCycle(pwm)
        #time.sleep(0.01)                           #sleep for 10u second
 
-def rstop(pw):
+def rstop(pwm):
     print "Change from reverse to stop"
     for x in range (40000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm += .001
@@ -45,7 +45,7 @@ def rstop(pw):
        pl.ChangeDutyCycle(pwm)
        #time.sleep(0.01)                           #sleep for 10u second
 
-def reverse(pw):
+def reverse(pwm):
     print "Speed up Reverse"
     for x in range (40000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm -= .001
@@ -53,7 +53,7 @@ def reverse(pw):
        pl.ChangeDutyCycle(pwm)
        #time.sleep(0.01)                           #sleep for 10u second
 
-def turn(pw):
+def turn(pwm):
     print "Turn right then stop"
 
 forward(pwm)
