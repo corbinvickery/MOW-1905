@@ -18,16 +18,6 @@ pl.start(pwm)
    # t -= 1
 
 
-forward(pwm)
-time.sleep(1)
-fstop(pwm)
-time.sleep(1)
-reverse(pwm)
-time.sleep(1)
-rstop(pwm)
-time.sleep(1)
-turn(pwm)
-time.sleep(1)
 
 
 def forward(pw):
@@ -66,3 +56,13 @@ def reverse(pw):
 def turn(pw):
     print "Turn right then stop"
 
+forward(pwm)
+time.sleep(1)
+fstop(pwm)
+time.sleep(1)
+reverse(pwm)
+time.sleep(1)
+rstop(pwm)
+time.sleep(1)
+turn(pwm)
+time.sleep(1)
