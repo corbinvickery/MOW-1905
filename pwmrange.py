@@ -13,19 +13,21 @@ GPIO.setup(17,GPIO.OUT)           # initialize GPIO19 as an output.
 p = GPIO.PWM(17,500)          #GPIO17 as PWM output, with 100Hz frequency
 pwm = 50
 p.start(pwm)                              #generate PWM signal with 0 duty cycle
-
+time.sleep(1)
 for x in range (49):
 
     print (pwm)
     pwm += 1 
     p.ChangeDutyCycle(pwm)
     time.sleep(.5)
+time.sleep(3)
 for x in range (49):
 
     print (pwm)
     pwm -= 1 
     p.ChangeDutyCycle(pwm)
     time.sleep(.5)
+print (pwm)
 
 
 
