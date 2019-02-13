@@ -61,7 +61,7 @@ def turn():
     print ("Turn right then stop")
 
 for x in range (3):
-    forward(pwm)
+    forward()
     time.sleep(1)
 #fstop(pwm)
 #time.sleep(1)
