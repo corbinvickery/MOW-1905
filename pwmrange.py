@@ -14,11 +14,11 @@ p = GPIO.PWM(17,600)          #GPIO17 as PWM output, with 100Hz frequency
 pwm = 75
 p.start(pwm)                              #generate PWM signal with 0 duty cycle
 
-time.sleep(1)
+#time.sleep(1)
 for x in range (24999):                          #execute loop for 50 times, x being incremented from 0 to 49.
     pwm -= .001
     p.ChangeDutyCycle(pwm)               #change duty cycle for varying the brightness of LED.
-    time.sleep(1)
+time.sleep(1)
 
 t = 3
 while t>0:                               #execute loop
