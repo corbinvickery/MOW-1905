@@ -23,9 +23,10 @@ pl.start(pwml)
 
 def forward():
     print ("Speed up forward")
+    global pwmr
+    global pwml
     for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+       
        pwmr += .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
@@ -35,9 +36,10 @@ def forward():
 
 def fstop():
     print ("Change from forword to stop")
+    global pwmr
+    global pwml
     for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+       
        pwmr -= .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
@@ -46,9 +48,10 @@ def fstop():
 
 def rstop():
     print ("Change from reverse to stop")
+    global pwmr
+    global pwml
     for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+       
        pwmr += .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
@@ -57,9 +60,10 @@ def rstop():
 
 def reverse():
     print ("Speed up Reverse")
+    global pwmr
+    global pwml
     for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+      
        pwmr -= .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
@@ -68,17 +72,17 @@ def reverse():
 
 def turn():
     print ("Turn right then stop")
+    global pwmr
+    global pwml
     for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+      
        pwmr -= .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwml)
        time.sleep(0.01)
        for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       global pwmr
-       global pwml
+       
        pwmr += .1
        pwml -= .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
