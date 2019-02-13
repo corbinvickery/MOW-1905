@@ -9,7 +9,7 @@ GPIO.setup(27,GPIO.OUT)
 
 pr = GPIO.PWM(17,500)          #GPIO17 as PWM output, with 100Hz frequency
 pl = GPIO.PWM(27,500)          #GPIO27 as PWM output, with 100Hz frequency
-pwm = 50.0
+pwm = 40.0
 pr.start(pwm)
 pl.start(pwm)
 
@@ -22,7 +22,7 @@ pl.start(pwm)
 
 def forward(pwm):
     print ("Speed up forward")
-    for x in range (499):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm += .1
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
@@ -31,7 +31,7 @@ def forward(pwm):
 
 def fstop(pwm):
     print ("Change from forword to stop")
-    for x in range (499):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        pwm -= .1
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
