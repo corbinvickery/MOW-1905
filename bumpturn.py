@@ -7,8 +7,8 @@ GPIO.setwarnings(False)
 GPIO.setup(17,GPIO.OUT)
 GPIO.setup(27,GPIO.OUT)
 
-pr = GPIO.PWM(17,500)          #GPIO17 as PWM output, with 100Hz frequency
-pl = GPIO.PWM(27,500)          #GPIO27 as PWM output, with 100Hz frequency
+pr = GPIO.PWM(17,100)          #GPIO17 as PWM output, with 100Hz frequency
+pl = GPIO.PWM(27,100)          #GPIO27 as PWM output, with 100Hz frequency
 pwmr = 40.0
 pwml = 40.0
 pr.start(pwmr)
