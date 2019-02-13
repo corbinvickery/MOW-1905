@@ -81,7 +81,7 @@ def turn():
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwml)
        time.sleep(0.01)
-       for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr += .1
        pwml -= .1
