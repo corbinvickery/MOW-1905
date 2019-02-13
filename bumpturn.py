@@ -63,8 +63,8 @@ def turn():
 for x in range (3):
     forward()
     time.sleep(1)
-#fstop(pwm)
-#time.sleep(1)
+    fstop(pwm)
+    time.sleep(1)
 #reverse(pwm)
 #time.sleep(1)
 #rstop(pwm)
