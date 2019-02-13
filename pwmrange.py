@@ -32,7 +32,7 @@ for x in range (25):
     p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 
-for x in range (12.5):
+for x in range (12):
 
     print (pwm)
     pwm += 1 
