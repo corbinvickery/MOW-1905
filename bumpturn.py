@@ -26,7 +26,7 @@ def forward(pwm):
        pwm += .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       time.sleep(0.1)                           #sleep for 10m second
+       time.sleep(0.01)                           #sleep for 10m second
 
 
 def fstop(pwm):
@@ -35,7 +35,7 @@ def fstop(pwm):
        pwm -= .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       time.sleep(0.1)                           #sleep for 10m second
+       time.sleep(0.01)                           #sleep for 10m second
 
 def rstop(pwm):
     print ("Change from reverse to stop")
@@ -43,7 +43,7 @@ def rstop(pwm):
        pwm += .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       time.sleep(0.1)                           #sleep for 10m second
+       time.sleep(0.01)                           #sleep for 10m second
 
 def reverse(pwm):
     print ("Speed up Reverse")
@@ -51,7 +51,7 @@ def reverse(pwm):
        pwm -= .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       time.sleep(0.1)                           #sleep for 10m second
+       time.sleep(0.01)                           #sleep for 10m second
 
 def turn(pwm):
     print ("Turn right then stop")
