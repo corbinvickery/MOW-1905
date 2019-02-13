@@ -33,6 +33,7 @@ while t>0:                               #execute loop
     print (pwm)
     time.sleep(.5)
 
+print (pwm)
 
 time.sleep(1)
 
