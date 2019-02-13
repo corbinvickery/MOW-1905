@@ -11,31 +11,37 @@ GPIO.setmode (GPIO.BCM)         #we are programming the GPIO by BCM pin numbers.
 GPIO.setup(17,GPIO.OUT)           # initialize GPIO19 as an output.
 
 p = GPIO.PWM(17,250)          #GPIO17 as PWM output, with 100Hz frequency
-pwm = 25.0
+pwm = 12.5
 print (pwm)
 p.start(pwm)
 p.ChangeDutyCycle(pwm)                              #generate PWM signal with 0 duty cycle
 time.sleep(5)
-
-for x in range (25):
+for x in range (125):
 
     print (pwm)
-    pwm += 1 
+    pwm -= .1 
+    p.ChangeDutyCycle(pwm)
+    time.sleep(.1)
+
+for x in range (250):
+
+    print (pwm)
+    pwm += .1 
     p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 time.sleep(1)
 
-for x in range (25):
+for x in range (250):
 
     print (pwm)
-    pwm -= 1 
+    pwm -= .1 
     p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 
-for x in range (12):
+for x in range (125):
 
     print (pwm)
-    pwm += 1 
+    pwm += .1 
     p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 print (pwm)
