@@ -1,6 +1,6 @@
 #Used to bump and then turn
 import time
-import RPi.GPIO as gpio
+import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
