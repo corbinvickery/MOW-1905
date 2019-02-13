@@ -10,7 +10,7 @@ GPIO.setmode (GPIO.BCM)         #we are programming the GPIO by BCM pin numbers.
 
 GPIO.setup(17,GPIO.OUT)           # initialize GPIO19 as an output.
 
-p = GPIO.PWM(17,600)          #GPIO17 as PWM output, with 100Hz frequency
+p = GPIO.PWM(17,200)          #GPIO17 as PWM output, with 100Hz frequency
 pwm = 75
 p.start(pwm)                              #generate PWM signal with 0 duty cycle
 
@@ -26,12 +26,12 @@ while t>0:                               #execute loop
     for x in range (49999):                          #execute loop for 50 times, x being incremented from 0 to 49.
        pwm += .001
        p.ChangeDutyCycle(pwm)               #change duty cycle for varying the brightness of LED.
-       #time.sleep(0.01)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 10m second
 
     for x in range (49999):                         #execute loop for 50 times, x being incremented from 0 to 49.
         pwm -= .001
         p.ChangeDutyCycle(pwm)        #change duty cycle for changing the brightness of LED.
-        #time.sleep(0.01)                          #sleep for 10m second
+        time.sleep(0.001)                          #sleep for 10m second
 
 
 time.sleep(1)
