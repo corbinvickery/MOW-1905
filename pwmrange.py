@@ -18,6 +18,7 @@ for x in range (99):
 
     print (pwm)
     pwm += 1 
+    p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 
 
