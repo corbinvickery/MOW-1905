@@ -10,7 +10,7 @@ GPIO.setmode (GPIO.BCM)         #we are programming the GPIO by BCM pin numbers.
 
 GPIO.setup(17,GPIO.OUT)           # initialize GPIO19 as an output.
 
-p = GPIO.PWM(17,500)          #GPIO17 as PWM output, with 100Hz frequency
+p = GPIO.PWM(17,250)          #GPIO17 as PWM output, with 100Hz frequency
 pwm = 75
 p.start(pwm)                              #generate PWM signal with 0 duty cycle
 
