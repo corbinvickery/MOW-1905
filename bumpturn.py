@@ -21,40 +21,40 @@ pl.start(pwm)
 
 
 def forward(pwm):
-    print "Speed up forward"
-    for x in range (50000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       pwm += .001
+    print ("Speed up forward")
+    for x in range (5000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+       pwm += .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       #time.sleep(0.01)                           #sleep for 10u second
+       time.sleep(0.1)                           #sleep for 10m second
 
 
 def fstop(pwm):
-    print "Change from forword to stop"
-    for x in range (50000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       pwm -= .001
+    print ("Change from forword to stop")
+    for x in range (5000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+       pwm -= .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       #time.sleep(0.01)                           #sleep for 10u second
+       time.sleep(0.1)                           #sleep for 10m second
 
 def rstop(pwm):
-    print "Change from reverse to stop"
-    for x in range (50000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       pwm += .001
+    print ("Change from reverse to stop")
+    for x in range (5000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+       pwm += .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       #time.sleep(0.01)                           #sleep for 10u second
+       time.sleep(0.1)                           #sleep for 10m second
 
 def reverse(pwm):
-    print "Speed up Reverse"
-    for x in range (50000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       pwm -= .001
+    print ("Speed up Reverse")
+    for x in range (5000):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+       pwm -= .01
        pr.ChangeDutyCycle(pwm)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwm)
-       #time.sleep(0.01)                           #sleep for 10u second
+       time.sleep(0.1)                           #sleep for 10m second
 
 def turn(pwm):
-    print "Turn right then stop"
+    print ("Turn right then stop")
 
 forward(pwm)
 time.sleep(1)
