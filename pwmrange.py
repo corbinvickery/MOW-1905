@@ -15,7 +15,7 @@ pwm = 75
 print (pwm)
 p.start(pwm)
 p.ChangeDutyCycle(pwm)                              #generate PWM signal with 0 duty cycle
-time.sleep(500)
+time.sleep(5)
 for x in range (24):
 
     print (pwm)
@@ -36,7 +36,7 @@ for x in range (24):
     p.ChangeDutyCycle(pwm)
     time.sleep(.1)
 print (pwm)
-time.sleep(500)
+time.sleep(5)
 
 
 
