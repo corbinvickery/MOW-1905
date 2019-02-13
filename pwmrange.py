@@ -23,12 +23,12 @@ time.sleep(1)
 t = 3
 while t>0:                               #execute loop
     t -= 1
-    for x in range (2499):                          #execute loop for 50 times, x being incremented from 0 to 49.
+    for x in range (4999):                          #execute loop for 50 times, x being incremented from 0 to 49.
        pwm += .01
        p.ChangeDutyCycle(pwm)               #change duty cycle for varying the brightness of LED.
        time.sleep(0.001)                           #sleep for 10m second
 
-    for x in range (2499):                         #execute loop for 50 times, x being incremented from 0 to 49.
+    for x in range (4999):                         #execute loop for 50 times, x being incremented from 0 to 49.
         pwm -= .01
         p.ChangeDutyCycle(pwm)        #change duty cycle for changing the brightness of LED.
         time.sleep(0.001)                          #sleep for 10m second
