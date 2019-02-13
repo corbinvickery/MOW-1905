@@ -18,7 +18,7 @@ p.start(pwm)                              #generate PWM signal with 0 duty cycle
 for x in range (24999):                          #execute loop for 50 times, x being incremented from 0 to 49.
     pwm -= .001
     p.ChangeDutyCycle(pwm)               #change duty cycle for varying the brightness of LED.
-time.sleep(1)
+#time.sleep(1)
 
 t = 3
 while t>0:                               #execute loop
@@ -34,11 +34,11 @@ while t>0:                               #execute loop
         time.sleep(0.001)                          #sleep for 10m second
 
 
-time.sleep(1)
+#time.sleep(1)
 
 for x in range (24999):                          #execute loop for 50 times, x being incremented from 0 to 49.
     pwm += .001
     p.ChangeDutyCycle(pwm)               #change duty cycle for varying the brightness of LED.
 
-time.sleep(1)
+#time.sleep(1)
 
