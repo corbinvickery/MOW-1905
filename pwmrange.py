@@ -14,7 +14,7 @@ p = GPIO.PWM(17,500)          #GPIO17 as PWM output, with 100Hz frequency
 pwm = 0
 p.start(pwm)                              #generate PWM signal with 0 duty cycle
 
-for x in range (99)
+for x in range (99):
 
     print (pwm)
     pwm += 1 
