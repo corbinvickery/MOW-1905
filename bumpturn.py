@@ -7,10 +7,10 @@ GPIO.setwarnings(False)
 GPIO.setup(17,GPIO.OUT)
 GPIO.setup(27,GPIO.OUT)
 
-pr = GPIO.PWM(17,100)          #GPIO17 as PWM output, with 100Hz frequency
-pl = GPIO.PWM(27,100)          #GPIO27 as PWM output, with 100Hz frequency
-pwmr = 40.0
-pwml = 40.0
+pr = GPIO.PWM(17,250)          #GPIO17 as PWM output, with 100Hz frequency
+pl = GPIO.PWM(27,250)          #GPIO27 as PWM output, with 100Hz frequency
+pwmr = 35.0
+pwml = 35.0
 pr.start(pwmr)
 pl.start(pwml)
 
@@ -25,7 +25,7 @@ def forward():
     print ("Speed up forward")
     global pwmr
     global pwml
-    for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (150):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr += .1
        pwml += .1
@@ -38,7 +38,7 @@ def fstop():
     print ("Change from forword to stop")
     global pwmr
     global pwml
-    for x in range (599):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (150):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= .1
        pwml -= .1
@@ -50,7 +50,7 @@ def rstop():
     print ("Change from reverse to stop")
     global pwmr
     global pwml
-    for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr += .1
        pwml += .1
@@ -62,7 +62,7 @@ def reverse():
     print ("Speed up Reverse")
     global pwmr
     global pwml
-    for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr -= .1
        pwml -= .1
@@ -74,14 +74,14 @@ def turn():
     print ("Turn right then stop")
     global pwmr
     global pwml
-    for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr -= .1
        pwml += .1
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwml)
        time.sleep(0.01)
-    for x in range (399):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr += .1
        pwml -= .1
@@ -89,7 +89,7 @@ def turn():
        pl.ChangeDutyCycle(pwml)
        time.sleep(0.01)
 
-for x in range (3):
+for x in range (1):
     forward()
     time.sleep(1)
     fstop()
