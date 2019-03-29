@@ -8,7 +8,7 @@ GPIO.setwarnings(False)
 
 GPIO.setup(4,GPIO.OUT)  
 
-stone = GPIO.PWM(4,100)            #GPIO17 PWM, with 100Hz
+sonar = GPIO.PWM(4,100)            #GPIO17 PWM, with 100Hz
 
 lowt = 20			#low freq for low sonar alert tone
 medt = 50			#medium freq for mid level tone
