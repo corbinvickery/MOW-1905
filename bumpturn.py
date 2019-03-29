@@ -21,6 +21,7 @@ pwmr = 35.0
 pwml = 35.0
 driver.start(pwmr)
 drivel.start(pwml)
+lowt = 90
 
 #t = 3
 #while t>0:                               #execute loop
