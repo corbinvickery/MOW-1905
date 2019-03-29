@@ -19,8 +19,8 @@ drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for L
 
 pwmr = 35.0
 pwml = 35.0
-pr.start(pwmr)
-pl.start(pwml)
+driver.start(pwmr)
+drivel.start(pwml)
 
 #t = 3
 #while t>0:                               #execute loop
