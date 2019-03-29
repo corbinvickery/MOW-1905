@@ -99,7 +99,7 @@ def turn():
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
  
-print("Sonar Test")
+
 sonar.ChangeDutyCycle(lowt)
 time.sleep(.1)
 sonar.ChangeDutyCycle(0)
@@ -108,7 +108,7 @@ sonar.ChangeDutyCycle(lowt)
 time.sleep(.1)
 sonar.ChangeDutyCycle(0)
 time.sleep(.1)
-print ("Success")
+print ("Sonar test successful")
 
 for x in range (1):
     forward()
