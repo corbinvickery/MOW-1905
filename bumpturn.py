@@ -96,6 +96,15 @@ def turn():
        pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        pl.ChangeDutyCycle(pwml)
        time.sleep(0.01)
+      
+sonar.ChangeDutyCycle(lowt)
+time.sleep(.3)
+sonar.ChangeDutyCycle(0)
+time.sleep(.2)
+sonar.ChangeDutyCycle(lowt)
+time.sleep(.3)
+sonar.ChangeDutyCycle(0)
+time.sleep(.2)
 
 for x in range (1):
     forward()
