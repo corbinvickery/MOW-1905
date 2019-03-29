@@ -101,13 +101,13 @@ def turn():
  
 print("Sonar Test")
 sonar.ChangeDutyCycle(lowt)
-time.sleep(.15)
+time.sleep(.1)
 sonar.ChangeDutyCycle(0)
-time.sleep(.2)
+time.sleep(.1)
 sonar.ChangeDutyCycle(lowt)
-time.sleep(.3)
+time.sleep(.1)
 sonar.ChangeDutyCycle(0)
-time.sleep(.2)
+time.sleep(.1)
 print ("Success")
 
 for x in range (1):
