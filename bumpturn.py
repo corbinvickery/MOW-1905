@@ -13,7 +13,7 @@ GPIO.setup(23,GPIO.OUT)             #Reverse trigger Left
 GPIO.setup(24,GPIO.IN)              #Bump sense Right
 GPIO.setup(25,GPIO.IN)              #Bump sense Left
 
-stone = GPIO.PWM(4,100)            #GPIO17 PWM, with 100Hz
+sonar = GPIO.PWM(4,100)            #GPIO17 PWM, with 100Hz
 driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
 drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for Left  motor
 
