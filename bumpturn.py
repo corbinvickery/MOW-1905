@@ -38,8 +38,8 @@ def forward():
        
        pwmr += .1
        pwml += .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
 
 
@@ -51,8 +51,8 @@ def fstop():
        
        pwmr -= .1
        pwml -= .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
 
 def rstop():
@@ -63,8 +63,8 @@ def rstop():
        
        pwmr += .1
        pwml += .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
 
 def reverse():
@@ -75,8 +75,8 @@ def reverse():
       
        pwmr -= .1
        pwml -= .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
 
 def turn():
@@ -87,15 +87,15 @@ def turn():
       
        pwmr -= .1
        pwml += .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
     for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr += .1
        pwml -= .1
-       pr.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       pl.ChangeDutyCycle(pwml)
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
       
 sonar.ChangeDutyCycle(lowt)
