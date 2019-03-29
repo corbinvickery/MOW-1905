@@ -18,7 +18,7 @@ sonar.start(0)
 
 # testing low pitch timing
 
-For x in range (3):
+for x in range (3):
   
   sonar.ChangeDutyCycle(lowt)
   time.sleep(.5)
