@@ -101,7 +101,7 @@ def turn():
  
 print("Sonar Test")
 sonar.ChangeDutyCycle(lowt)
-time.sleep(.3)
+time.sleep(.15)
 sonar.ChangeDutyCycle(0)
 time.sleep(.2)
 sonar.ChangeDutyCycle(lowt)
