@@ -97,7 +97,8 @@ def turn():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
-      
+ 
+print("Sonar Test")
 sonar.ChangeDutyCycle(lowt)
 time.sleep(.3)
 sonar.ChangeDutyCycle(0)
@@ -106,6 +107,7 @@ sonar.ChangeDutyCycle(lowt)
 time.sleep(.3)
 sonar.ChangeDutyCycle(0)
 time.sleep(.2)
+print ("Success")
 
 for x in range (1):
     forward()
@@ -117,6 +119,7 @@ for x in range (1):
     rstop()
     time.sleep(1)
     turn()
+    print ("done")
     time.sleep(1)
    # while True:
    # input_state = GPIO.input(18)
