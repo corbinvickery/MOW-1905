@@ -19,6 +19,7 @@ drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for L
 
 pwmr = 35.0
 pwml = 35.0
+sonar.start(0)
 driver.start(pwmr)
 drivel.start(pwml)
 lowt = 90
