@@ -18,55 +18,24 @@ sonar.start(0)
 
 # testing low pitch timing
 
-time.sleep(1)
-sonar.ChangeDutyCycle(lowt)
-time.sleep(1)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
+while (3)
+  
+  sonar.ChangeDutyCycle(lowt)
+  time.sleep(.5)
+  sonar.ChangeDutyCycle(0)
+  time.sleep(1)
 
-sonar.ChangeDutyCycle(lowt)
-time.sleep(.8)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
+  sonar.ChangeDutyCycle(lowt)
+  time.sleep(.5)
+  sonar.ChangeDutyCycle(0)
+  time.sleep(1)
 
-sonar.ChangeDutyCycle(lowt)
-time.sleep(.5)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
+  sonar.ChangeDutyCycle(lowt)
+  time.sleep(1)
+  sonar.ChangeDutyCycle(0)
+  time.sleep(1)
 
-# testing medium pitch timing
 
-sonar.ChangeDutyCycle(medt)
-time.sleep(1)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
-
-sonar.ChangeDutyCycle(medt)
-time.sleep(.8)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
-
-sonar.ChangeDutyCycle(medt)
-time.sleep(.5)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
-
-# testing high pitch timing
-
-sonar.ChangeDutyCycle(hight)
-time.sleep(1)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
-
-sonar.ChangeDutyCycle(hight)
-time.sleep(.8)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
-
-sonar.ChangeDutyCycle(hight)
-time.sleep(.5)
-sonar.ChangeDutyCycle(0)
-time.sleep(1)
 
 
 
