@@ -23,17 +23,17 @@ for x in range (3):
   sonar.ChangeDutyCycle(lowt)
   time.sleep(.5)
   sonar.ChangeDutyCycle(0)
-  time.sleep(1)
+  time.sleep(.2)
 
   sonar.ChangeDutyCycle(lowt)
   time.sleep(.5)
   sonar.ChangeDutyCycle(0)
-  time.sleep(1)
+  time.sleep(.2)
 
   sonar.ChangeDutyCycle(lowt)
   time.sleep(1)
   sonar.ChangeDutyCycle(0)
-  time.sleep(1)
+  time.sleep(.2)
 
 
 
