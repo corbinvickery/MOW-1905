@@ -32,10 +32,6 @@ lowt = 90
 
 
 def forward():
-    sonar.ChangeDutyCycle(lowt)
-    time.sleep(.1)
-    sonar.ChangeDutyCycle(0)
-    time.sleep(.1)
     print ("Speed up forward")
     GPIO.output(22,GPIO.LOW)
     GPIO.output(23,GPIO.LOW)
@@ -47,7 +43,7 @@ def forward():
        pwml += 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 10m second
 
 
 def fstop():
@@ -60,7 +56,7 @@ def fstop():
        pwml -= 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 10m second
 
 def rstop():
     print ("Slow down reverse")
@@ -72,9 +68,9 @@ def rstop():
        pwml -= 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)                           #sleep for 10m second
-       GPIO.output(22,GPIO.LOW)
-       GPIO.output(23,GPIO.LOW)
+       time.sleep(0.001)                           #sleep for 10m second
+    GPIO.output(22,GPIO.LOW)
+    GPIO.output(23,GPIO.LOW)
       
 def reverse():
     print ("Speed up Reverse")
@@ -88,7 +84,7 @@ def reverse():
        pwml += 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 10m second
 
 def rightturn():
     print ("Turn right then stop")
