@@ -10,7 +10,7 @@ GPIO.setup(17,GPIO.OUT)             #Driving motor Right signal
 GPIO.setup(27,GPIO.OUT)             #Driving motor Left  signal
 GPIO.setup(22,GPIO.OUT)             #Reverse trigger Right
 GPIO.setup(23,GPIO.OUT)             #Reverse trigger Left
-GPIO.setup(24,GPIO.IN)              #Bump sense Right
+GPIO.setup(24,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Right
 GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Left
 
 sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 100Hz
@@ -115,7 +115,7 @@ def rightturn():
     GPIO.output(22,GPIO.LOW)
    
 def leftturn():
-    print ("Turn right then stop")
+    print ("Turn left then stop")
     global pwmr
     global pwml
     GPIO.output(23,GPIO.HIGH)
