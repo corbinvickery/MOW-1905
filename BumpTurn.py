@@ -167,9 +167,8 @@ for x in range (1):
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
 while True:
-    input_state = GPIO.input(24)
-    if input_state == False:
-    print ("done")
+   input_state = GPIO.input(24)
+   if input_state == False:
     print ("Button Pressed")
     time.sleep(0.2)
     rightturn()
