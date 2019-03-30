@@ -90,7 +90,7 @@ def reverse():
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
 
-def turn():
+def rightturn():
     print ("Turn right then stop")
     global pwmr
     global pwml
@@ -113,16 +113,35 @@ def turn():
        time.sleep(0.01)
       
     GPIO.output(22,GPIO.LOW)
+   
+   def leftturn():
+    print ("Turn right then stop")
+    global pwmr
+    global pwml
+    GPIO.output(23,GPIO.HIGH)
+    pwmr = 0
+    pwml = 0
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+      
+       pwmr += 1
+       pwml += 1
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
+       time.sleep(0.01)
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+       
+       pwmr -= 1
+       pwml -= 1
+       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+       drivel.ChangeDutyCycle(pwml)
+       time.sleep(0.01)
+      
+    GPIO.output(23,GPIO.LOW)
  
 
 sonar.ChangeDutyCycle(lowt)
-time.sleep(.1)
+time.sleep(.6)
 sonar.ChangeDutyCycle(0)
-time.sleep(.1)
-sonar.ChangeDutyCycle(lowt)
-time.sleep(.1)
-sonar.ChangeDutyCycle(0)
-time.sleep(.1)
 print ("Sonar test successful")
 
 for x in range (1):
@@ -134,10 +153,20 @@ for x in range (1):
     time.sleep(1)
     rstop()
     time.sleep(1)
-    turn()
+    rightturn()
+    time.sleep(1)
+    leftturn()
     print ("done")
     time.sleep(1)
-   # while True:
+    sonar.ChangeDutyCycle(lowt)
+    time.sleep(.1)
+    sonar.ChangeDutyCycle(0)
+    time.sleep(.1)
+    sonar.ChangeDutyCycle(lowt)
+    time.sleep(.1)
+    sonar.ChangeDutyCycle(0)
+    time.sleep(.1)
+ while True:
    # input_state = GPIO.input(18)
     #if input_state == False:
      #  print('Button Pressed')
