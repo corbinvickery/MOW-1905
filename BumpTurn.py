@@ -114,7 +114,7 @@ def rightturn():
       
     GPIO.output(22,GPIO.LOW)
    
-   def leftturn():
+def leftturn():
     print ("Turn right then stop")
     global pwmr
     global pwml
