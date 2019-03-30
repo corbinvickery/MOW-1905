@@ -66,10 +66,10 @@ def rstop():
     print ("Slow down reverse")
     global pwmr
     global pwml
-    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
-       pwmr += 1
-       pwml += 1
+       pwmr -= 1
+       pwml -= 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
@@ -82,8 +82,8 @@ def reverse():
     global pwml
     for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
-       pwmr -= 1
-       pwml -= 1
+       pwmr += 1
+       pwml += 1
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
@@ -100,7 +100,7 @@ def turn():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
-    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= 1
        pwml -= 1
