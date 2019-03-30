@@ -93,6 +93,8 @@ def turn():
     global pwmr
     global pwml
     GPIO.output(22,GPIO.HIGH)
+   pwmr = 0
+   pwml = 0
     for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr += 1
