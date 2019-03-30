@@ -170,7 +170,4 @@ while True:
    input_state = GPIO.input(24)
    if input_state == False:
     print ("Button Pressed")
-    GPIO.output(23,GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(23,GPIO.LOW)
-    #rightturn()
+    rightturn()
