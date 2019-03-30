@@ -11,7 +11,7 @@ GPIO.setup(27,GPIO.OUT)             #Driving motor Left  signal
 GPIO.setup(22,GPIO.OUT)             #Reverse trigger Right
 GPIO.setup(23,GPIO.OUT)             #Reverse trigger Left
 GPIO.setup(24,GPIO.IN)              #Bump sense Right
-GPIO.setup(25,GPIO.IN)              #Bump sense Left
+GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Left
 
 sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 100Hz
 driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
@@ -166,8 +166,9 @@ for x in range (1):
     time.sleep(.1)
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
- while True:
-   # input_state = GPIO.input(18)
-    #if input_state == False:
-     #  print('Button Pressed')
-      #  time.sleep(0.2)
+while True:
+    input_state = GPIO.input(24)
+    if input_state == False:
+    print('Button Pressed')
+    time.sleep(0.2)
+    rightturn()
