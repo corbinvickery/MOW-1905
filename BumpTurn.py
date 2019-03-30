@@ -169,6 +169,6 @@ for x in range (1):
 while True:
     input_state = GPIO.input(24)
     if input_state == False:
-    print('Button Pressed')
+    print ("Button Pressed")
     time.sleep(0.2)
     rightturn()
