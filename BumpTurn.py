@@ -41,7 +41,7 @@ def forward():
     GPIO.output(23,GPIO.LOW)
     global pwmr
     global pwml
-    for x in range (100):                          #
+    for x in range (99):                          #
        
        pwmr += 1
        pwml += 1
@@ -54,7 +54,7 @@ def fstop():
     print ("Slow down forward")
     global pwmr
     global pwml
-    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= 1
        pwml -= 1
@@ -80,7 +80,7 @@ def reverse():
     GPIO.output(23,GPIO.HIGH)
     global pwmr
     global pwml
-    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr += 1
        pwml += 1
@@ -95,7 +95,7 @@ def turn():
     GPIO.output(22,GPIO.HIGH)
    pwmr = 0
    pwml = 0
-    for x in range (100):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr += 1
        pwml += 1
