@@ -73,7 +73,9 @@ def rstop():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)                           #sleep for 10m second
-
+       GPIO.output(22,GPIO.LOW)
+       GPIO.output(23,GPIO.LOW)
+      
 def reverse():
     print ("Speed up Reverse")
     GPIO.output(22,GPIO.HIGH)
@@ -109,6 +111,8 @@ def turn():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
+      
+    GPIO.output(22,GPIO.LOW)
  
 
 sonar.ChangeDutyCycle(lowt)
