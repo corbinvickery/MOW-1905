@@ -86,7 +86,7 @@ def reverse():
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.001)                           #sleep for 10m second
 
-def rightturn():
+def rightpivot():
     print ("Turn right then stop")
     global pwmr
     global pwml
@@ -110,7 +110,7 @@ def rightturn():
       
     GPIO.output(22,GPIO.LOW)
    
-def leftturn():
+def leftpivot():
     print ("Turn left then stop")
     global pwmr
     global pwml
@@ -149,9 +149,9 @@ for x in range (1):
     time.sleep(1)
     rstop()
     time.sleep(1)
-    rightturn()
+    rightpivot()
     time.sleep(1)
-    leftturn()
+    leftpivot()
     print ("done")
     time.sleep(1)
     sonar.ChangeDutyCycle(lowt)
@@ -163,7 +163,7 @@ for x in range (1):
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
 while True:
-   input_state = GPIO.input(24)
+   input_state = GPIO.input(25)
    if input_state == False:
     print ("Button Pressed")
-    rightturn()
+    leftpivot()
