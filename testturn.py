@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setup(4,GPIO.OUT)              #Sonalert "stone" signal
+GPIO.setup(4,GPIO.OUT)              #Sonalert "sonar" signal
 GPIO.setup(17,GPIO.OUT)             #Driving motor Right signal
 GPIO.setup(27,GPIO.OUT)             #Driving motor Left  signal
 GPIO.setup(22,GPIO.OUT)             #Reverse trigger Right
@@ -87,7 +87,7 @@ def reverse():
        time.sleep(0.001)                           #sleep for 10m second
 
 def rightpivot():
-    print ("Turn right then stop")
+    print ("Turn right")
     global pwmr
     global pwml
     GPIO.output(22,GPIO.HIGH)
@@ -100,6 +100,14 @@ def rightpivot():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
+         
+def rightstop():
+    print ("Stop right turn")
+    global pwmr
+    global pwml
+    GPIO.output(22,GPIO.HIGH)
+    pwmr = 99
+    pwml = 99
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= 1
@@ -165,5 +173,14 @@ for x in range (1):
 while True:
    input_state = GPIO.input(25)
    if input_state == False:
-    print ("Button Pressed")
+    print ("Right Bumper")
+    reverse()
+    time.sleep(.6)
+    rstop()
+    time.sleep(.6)
     leftpivot()
+while True:
+   input_state = GPIO.input(24)
+   if input_state == False:
+    print ("Left Bumper")
+    rightpivot()
