@@ -1,6 +1,7 @@
 #used for testing Manual mode for mower using keyboard input
 
 #Used to bump and then turn
+import pygame
 import time
 import RPi.GPIO as GPIO
 
@@ -24,6 +25,7 @@ pwml = 0
 sonar.start(0)
 driver.start(pwmr)
 drivel.start(pwml)
+pygame.init()
 lowt = 90
 
 #t = 3
@@ -89,7 +91,7 @@ def reverse():
        time.sleep(0.001)                           #sleep for 10m second
 
 def rightpivot():
-    print ("Turn right then stop")
+    print ("Turn right")
     global pwmr
     global pwml
     GPIO.output(22,GPIO.HIGH)
@@ -102,6 +104,13 @@ def rightpivot():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
+def rightstop():
+    print ("stop turning right")
+    global pwmr
+    global pwml
+    GPIO.output(22,GPIO.HIGH)
+    pwmr = 99
+    pwml = 99
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= 1
@@ -126,6 +135,13 @@ def leftpivot():
        driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
+def leftstop():
+    print ("stop turning left")
+    global pwmr
+    global pwml
+    GPIO.output(23,GPIO.HIGH)
+    pwmr = 99
+    pwml = 99
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
        
        pwmr -= 1
@@ -152,8 +168,10 @@ for x in range (1):
     rstop()
     time.sleep(1)
     rightpivot()
+    rightstop()
     time.sleep(1)
     leftpivot()
+    leftstop()
     print ("done")
     time.sleep(1)
     sonar.ChangeDutyCycle(lowt)
@@ -164,8 +182,35 @@ for x in range (1):
     time.sleep(.1)
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
-while True:
-   input_state = GPIO.input(25)
-   if input_state == False:
-    print ("Button Pressed")
-    leftpivot()
+
+
+while main == True:
+
+   for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+            pygame.quit()
+            main = False
+
+      if event.type == pygame.KEYDOWN:
+         if event.key == pygame.K_LEFT or event.key == ord('a'):
+                leftpivot()
+         if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                rightpivot()
+         if event.key == pygame.K_UP or event.key == ord('w'):
+                forward()
+         if event.key == pygame.K_UP or event.key == ord('s'):
+                reverse()
+                print('reverse')
+
+      if event.type == pygame.KEYUP:
+         if event.key == pygame.K_LEFT or event.key == ord('a'):
+                leftstop()
+         if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                rightstop()
+         if event.key == pygame.K_UP or event.key == ord('w'):
+                fstop()
+         if event.key == pygame.K_UP or event.key == ord('s'):
+                rstop()
+         if event.key == ord('q'):
+                pygame.quit()
+                main = False

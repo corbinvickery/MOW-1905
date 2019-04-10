@@ -181,7 +181,7 @@ while True:
     leftpivot()
 while True:
    input_state = GPIO.input(24)
-   if input_state == False:
+   if input_state == True:
     print ("Left Bumper")
     reverse()
     time.sleep(.6)
