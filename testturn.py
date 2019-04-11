@@ -4,14 +4,14 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-
+GPIO.cleanup()
 GPIO.setup(4,GPIO.OUT)              #Sonalert "sonar" signal
 GPIO.setup(17,GPIO.OUT)             #Driving motor Right signal
 GPIO.setup(27,GPIO.OUT)             #Driving motor Left  signal
 GPIO.setup(22,GPIO.OUT)             #Reverse trigger Right
 GPIO.setup(23,GPIO.OUT)             #Reverse trigger Left
 GPIO.setup(24,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Right
-GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Left
+GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)              #Bump sense Left
 
 sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 100Hz
 driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
@@ -24,9 +24,6 @@ driver.start(pwmr)
 drivel.start(pwml)
 lowt = 90
 
-#t = 3
-#while t>0:                               #execute loop
-   # t -= 1
 
 
 
@@ -142,8 +139,26 @@ def leftpivot():
        drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
       
-    GPIO.output(23,GPIO.LOW)
- 
+def bumpright(channel):   
+    print ("Right Bumper")
+    reverse()
+    time.sleep(.6)
+    rstop()
+    time.sleep(.6)
+    leftpivot()
+    print ("done") 
+
+def bumpleft(channel):
+    print ("Left Bumper")
+    reverse()
+    time.sleep(.6)
+    rstop()
+    time.sleep(.6)
+    rightpivot()
+    print ("done")
+
+GPIO.add_event_detect(24, GPIO.RISING, callback=bumpright, bouncetime=3)
+GPIO.add_event_detect(25, GPIO.FALLING, callback=bumpleft, bouncetime=3)
 
 sonar.ChangeDutyCycle(lowt)
 time.sleep(.6)
@@ -173,21 +188,4 @@ for x in range (1):
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
 while True:
-   input_state = GPIO.input(25)
-   if input_state == False:
-    print ("Right Bumper")
-    reverse()
-    time.sleep(.6)
-    rstop()
-    time.sleep(.6)
-    leftpivot()
-    print ("done")
-   input_state = GPIO.input(24)
-   if input_state == True:
-    print ("Left Bumper")
-    reverse()
-    time.sleep(.6)
-    rstop()
-    time.sleep(.6)
-    rightpivot()
-    print ("done")
+       time.sleep(.1)
