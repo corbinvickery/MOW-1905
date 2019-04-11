@@ -3,6 +3,7 @@
 #Used to bump and then turn
 import pygame
 import time
+import sys
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
@@ -197,17 +198,23 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
-                player.control(-steps,0)
+                leftpivot()
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                player.control(steps,0)
+                rightpivot()
             if event.key == pygame.K_UP or event.key == ord('w'):
-                print('jump')
+                forward()
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                reverse()
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
-                player.control(steps,0)
+                leftstop()
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                player.control(-steps,0)
+                rightstop()
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                fstop()
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                rstop()
             if event.key == ord('q'):
                 pygame.quit()
                 sys.exit()
