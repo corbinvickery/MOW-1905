@@ -78,6 +78,8 @@ def reverse():
     GPIO.output(23,GPIO.HIGH)
     global pwmr
     global pwml
+    pwmr = 0
+    pwml = 0
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
       
        pwmr += 1
@@ -179,7 +181,7 @@ while True:
     rstop()
     time.sleep(.6)
     leftpivot()
-while True:
+    print ("done")
    input_state = GPIO.input(24)
    if input_state == True:
     print ("Left Bumper")
@@ -188,3 +190,4 @@ while True:
     rstop()
     time.sleep(.6)
     rightpivot()
+    print ("done")
