@@ -182,40 +182,6 @@ for x in range (1):
     time.sleep(.1)
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
-<<<<<<< HEAD
-
-
-while main == True:
-
-   for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-            pygame.quit()
-            main = False
-
-      if event.type == pygame.KEYDOWN:
-         if event.key == pygame.K_LEFT or event.key == ord('a'):
-                leftpivot()
-         if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                rightpivot()
-         if event.key == pygame.K_UP or event.key == ord('w'):
-                forward()
-         if event.key == pygame.K_UP or event.key == ord('s'):
-                reverse()
-                print('reverse')
-
-      if event.type == pygame.KEYUP:
-         if event.key == pygame.K_LEFT or event.key == ord('a'):
-                leftstop()
-         if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                rightstop()
-         if event.key == pygame.K_UP or event.key == ord('w'):
-                fstop()
-         if event.key == pygame.K_UP or event.key == ord('s'):
-                rstop()
-         if event.key == ord('q'):
-                pygame.quit()
-                main = False
-=======
       
 while True:
    input_state = GPIO.input(25)
@@ -246,4 +212,3 @@ while True:
                 pygame.quit()
                 sys.exit()
                 main = False
->>>>>>> 194be38016e4a72e68bb30779ac28d44b5ea4122
