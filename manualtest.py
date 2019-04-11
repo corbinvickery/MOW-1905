@@ -182,6 +182,7 @@ for x in range (1):
     time.sleep(.1)
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
+<<<<<<< HEAD
 
 
 while main == True:
@@ -214,3 +215,35 @@ while main == True:
          if event.key == ord('q'):
                 pygame.quit()
                 main = False
+=======
+      
+while True:
+   input_state = GPIO.input(25)
+   if input_state == False:
+    print ("Button Pressed")
+    leftpivot()
+      
+      
+   for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit(); sys.exit()
+            main = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                player.control(-steps,0)
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                player.control(steps,0)
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                print('jump')
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                player.control(steps,0)
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                player.control(-steps,0)
+            if event.key == ord('q'):
+                pygame.quit()
+                sys.exit()
+                main = False
+>>>>>>> 194be38016e4a72e68bb30779ac28d44b5ea4122
