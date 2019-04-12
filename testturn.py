@@ -13,7 +13,7 @@ GPIO.setup(23,GPIO.OUT)             #Reverse trigger Left
 GPIO.setup(24,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Right
 GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)              #Bump sense Left
 
-sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 100Hz
+sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 500Hz for smoother sound
 driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
 drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for Left  motor
 
@@ -25,9 +25,6 @@ drivel.start(pwml)
 lowt = 90
 
 
-
-
-
 def forward():
     print ("Speed up forward")
     GPIO.output(22,GPIO.LOW)
@@ -35,11 +32,11 @@ def forward():
     global pwmr
     global pwml
     for x in range (99):                          #
-       
-       pwmr += 1
-       pwml += 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+       if pwmr < 100:
+              pwmr += 1
+              pwml += 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.001)                           #sleep for 10m second
 
 
@@ -48,11 +45,11 @@ def fstop():
     global pwmr
     global pwml
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       
-       pwmr -= 1
-       pwml -= 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+      if pwmr > 0:
+              pwmr -= 1
+              pwml -= 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.001)                           #sleep for 10m second
 
 def rstop():
@@ -60,11 +57,11 @@ def rstop():
     global pwmr
     global pwml
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       
-       pwmr -= 1
-       pwml -= 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+      if pwmr > 0:
+              pwmr -= 1
+              pwml -= 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.001)                           #sleep for 10m second
     GPIO.output(22,GPIO.LOW)
     GPIO.output(23,GPIO.LOW)
@@ -78,11 +75,11 @@ def reverse():
     pwmr = 0
     pwml = 0
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-      
-       pwmr += 1
-       pwml += 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+      if pwmr < 100:
+              pwmr += 1
+              pwml += 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.001)                           #sleep for 10m second
 
 def rightpivot():
@@ -93,11 +90,11 @@ def rightpivot():
     pwmr = 0
     pwml = 0
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-      
-       pwmr += 1
-       pwml += 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+      if pwmr < 100:
+              pwmr += 1
+              pwml += 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
          
 def rightstop():
@@ -108,11 +105,11 @@ def rightstop():
     pwmr = 99
     pwml = 99
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       
-       pwmr -= 1
-       pwml -= 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+       if pwmr > 0:
+              pwmr -= 1
+              pwml -= 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
       
     GPIO.output(22,GPIO.LOW)
@@ -125,22 +122,23 @@ def leftpivot():
     pwmr = 0
     pwml = 0
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-      
-       pwmr += 1
-       pwml += 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+      if pwmr < 100:
+              pwmr += 1
+              pwml += 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
     for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
-       
-       pwmr -= 1
-       pwml -= 1
-       driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-       drivel.ChangeDutyCycle(pwml)
+       if pwmr > 0:
+              pwmr -= 1
+              pwml -= 1
+              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
+              drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
       
 def bumpright(channel):   
     print ("Right Bumper")
+    #fstop()
     reverse()
     time.sleep(.6)
     rstop()
@@ -150,6 +148,7 @@ def bumpright(channel):
 
 def bumpleft(channel):
     print ("Left Bumper")
+    #fstop()
     reverse()
     time.sleep(.6)
     rstop()
@@ -187,5 +186,7 @@ for x in range (1):
     time.sleep(.1)
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
+
 while True:
+       #forward()
        time.sleep(.1)
