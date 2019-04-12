@@ -19,68 +19,66 @@ drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for L
 
 pwmr = 0
 pwml = 0
-sonar.start(0)
-driver.start(pwmr)
-drivel.start(pwml)
-lowt = 90
+sonar.start(0)                     #start sonar pwm
+driver.start(pwmr)                 #start pwm right     
+drivel.start(pwml)                 #start pwm left
+lowt = 90                          # sonar low tone
 
 
-def forward():
+def forward():                                   #speed up to top speed
     print ("Speed up forward")
-    GPIO.output(22,GPIO.LOW)
+    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
     GPIO.output(23,GPIO.LOW)
     global pwmr
     global pwml
-    for x in range (99):                          #
+    for x in range (99):                          
        if pwmr < 100:
               pwmr += 1
               pwml += 1
               driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
               drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 1 millisecond
 
 
-def fstop():
+def fstop():                                     #slow to a stop
     print ("Slow down forward")
     global pwmr
     global pwml
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 99.
       if pwmr > 0:
               pwmr -= 1
               pwml -= 1
               driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
               drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 1 millisecond
 
 def rstop():
     print ("Slow down reverse")
     global pwmr
     global pwml
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 60000.
       if pwmr > 0:
               pwmr -= 1
               pwml -= 1
               driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
               drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 1 millisecond
     GPIO.output(22,GPIO.LOW)
     GPIO.output(23,GPIO.LOW)
       
-def reverse():
-    print ("Speed up Reverse")
+def reverse():                                   #Reverse top speed
+    print ("Reverse")
     GPIO.output(22,GPIO.HIGH)
     GPIO.output(23,GPIO.HIGH)
     global pwmr
     global pwml
-    pwmr = 0
-    pwml = 0
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
       if pwmr < 100:
               pwmr += 1
               pwml += 1
               driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
               drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 10m second
+       time.sleep(0.001)                           #sleep for 1 millisecond
 
 def rightpivot():
     print ("Turn right")
@@ -89,7 +87,7 @@ def rightpivot():
     GPIO.output(22,GPIO.HIGH)
     pwmr = 0
     pwml = 0
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
       if pwmr < 100:
               pwmr += 1
               pwml += 1
@@ -104,7 +102,7 @@ def rightstop():
     GPIO.output(22,GPIO.HIGH)
     pwmr = 99
     pwml = 99
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
        if pwmr > 0:
               pwmr -= 1
               pwml -= 1
@@ -121,14 +119,14 @@ def leftpivot():
     GPIO.output(23,GPIO.HIGH)
     pwmr = 0
     pwml = 0
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
       if pwmr < 100:
               pwmr += 1
               pwml += 1
               driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
               drivel.ChangeDutyCycle(pwml)
        time.sleep(0.01)
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 60000.
+    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
        if pwmr > 0:
               pwmr -= 1
               pwml -= 1
