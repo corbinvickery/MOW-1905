@@ -3,9 +3,8 @@
 #Used to bump and then turn
 
 import time
-import sys
-import pygame
 import RPi.GPIO as GPIO
+import curses
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -27,7 +26,6 @@ pwml = 0
 sonar.start(0)
 driver.start(pwmr)
 drivel.start(pwml)
-pygame.init()
 lowt = 90
 
 
@@ -182,38 +180,30 @@ for x in range (1):
     sonar.ChangeDutyCycle(0)
     time.sleep(.1)
       
-while True:
-   input_state = GPIO.input(25)
-   if input_state == False:
-    print ("Button Pressed")
-    leftpivot()
-      
-      
-   for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit(); sys.exit()
-            main = False
+screen = curses.initscr()
+curses.noecho()
+curses.cbreak()
+screen.keypad(True)
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT or event.key == ord('a'):
-                leftpivot()
-            if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                rightpivot()
-            if event.key == pygame.K_UP or event.key == ord('w'):
-                forward()
-            if event.key == pygame.K_DOWN or event.key == ord('s'):
-                reverse()
+try:
+       while True:
+              char = screengetch()
+              if char == ord('q'):
+                     break
+              elif char == curses.KEY_UP:
+                     forward()
+              elif char == curses.KEY_DOWN:
+                     reverse()
+              elif char == curses.KEY_RIGHT:
+                     rightpivot()
+              elif char == curses.KEY_LEFT:
+                     leftpivot()
+              elif char == curses.KEY_SP:
+                     global pwmr
+                     global pwml
+                     pwmr = 0
+                     pwml = 0
+finally:
+       curses.nobreak(); screen.keypad(0); curses.echo()
+       curses.endwin()
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == ord('a'):
-                leftstop()
-            if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                rightstop()
-            if event.key == pygame.K_UP or event.key == ord('w'):
-                fstop()
-            if event.key == pygame.K_DOWN or event.key == ord('s'):
-                rstop()
-            if event.key == ord('q'):
-                pygame.quit()
-                sys.exit()
-                main = False
