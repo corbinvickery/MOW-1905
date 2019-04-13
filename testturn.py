@@ -17,8 +17,8 @@ sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 500Hz for smoother sound
 #driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
 #drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for Left  motor
 
-pwmr = 0
-pwml = 0
+#pwmr = 0
+#pwml = 0
 sonar.start(0)                     #start sonar pwm
 #driver.start(pwmr)                 #start pwm right     
 #drivel.start(pwml)                 #start pwm left
@@ -27,45 +27,51 @@ lowt = 90                          # sonar low tone
 
 def forward():                                   #speed up to top speed
     print ("Speed up forward")
-    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
-    GPIO.output(23,GPIO.LOW)
+    GPIO.output(22,GPIO.HIGH)                     #reverse triggers off
+    GPIO.output(23,GPIO.HIGH)
     GPIO.output(27,GPIO.HIGH)
     GPIO.output(17,GPIO.HIGH)
+    return
     
 
 def stop():                                     #slow to a stop
     print ("Stop")
-    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
+    GPIO.output(22,GPIO.LOW)                               #reverse triggers off
     GPIO.output(23,GPIO.LOW)
     GPIO.output(27,GPIO.LOW)
-    GPIO.output(17,GPIO.LOW)                          #sleep for 1 millisecond
+    GPIO.output(17,GPIO.LOW)
+    return
+                            #sleep for 1 millisecond
       
 def reverse():                                   #Reverse top speed
     print ("Reverse")
-    GPIO.output(22,GPIO.HIGH)
-    GPIO.output(23,GPIO.HIGH)
+    GPIO.output(22,GPIO.LOW)
+    GPIO.output(23,GPIO.LOW)
     GPIO.output(27,GPIO.HIGH)
-    GPIO.output(17,GPIO.HIGH)                           #sleep for 1 millisecond
+    GPIO.output(17,GPIO.HIGH)
+    return                      
 
 def rightpivot():
     print ("Turn right")
-    GPIO.output(22,GPIO.HIGH)
-    GPIO.output(23,GPIO.LOW)                     #reverse triggers off
+    GPIO.output(22,GPIO.LOW)
+    GPIO.output(23,GPIO.HIGH)                                  #reverse triggers off
     GPIO.output(27,GPIO.HIGH)
     GPIO.output(17,GPIO.HIGH)
+    return
               
    
 def leftpivot():
     print ("Turn left")
-    GPIO.output(23,GPIO.HIGH)
-    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
+    GPIO.output(23,GPIO.LOW)
+    GPIO.output(22,GPIO.HIGH)  
     GPIO.output(27,GPIO.HIGH)
     GPIO.output(17,GPIO.HIGH)
+    return
     
       
 def bumpright(channel):   
     print ("Right Bumper")
-    #fstop()
+    stop()
     reverse()
     time.sleep(1)
     stop()
@@ -73,11 +79,15 @@ def bumpright(channel):
     leftpivot()
     time.sleep(1)
     stop()
-    print ("done") 
+    time.sleep(1)
+    print ("Done")
+    forward()
+    return
+ 
 
 def bumpleft(channel):
     print ("Left Bumper")
-    #fstop()
+    stop()
     reverse()
     time.sleep(1)
     stop()
@@ -85,10 +95,13 @@ def bumpleft(channel):
     rightpivot()
     time.sleep(1)
     stop()
-    print ("done")
+    time.sleep(1)
+    print ("Done")
+    forward()
+    return
 
-GPIO.add_event_detect(24, GPIO.FALLING, callback=bumpright, bouncetime=3)
-GPIO.add_event_detect(25, GPIO.FALLING, callback=bumpleft, bouncetime=3)
+GPIO.add_event_detect(24, GPIO.FALLING, callback=bumpright, bouncetime=3000)
+GPIO.add_event_detect(25, GPIO.FALLING, callback=bumpleft, bouncetime=3000)
 
 sonar.ChangeDutyCycle(lowt)
 time.sleep(.6)
