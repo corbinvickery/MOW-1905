@@ -14,14 +14,14 @@ GPIO.setup(24,GPIO.IN, pull_up_down=GPIO.PUD_UP)              #Bump sense Right
 GPIO.setup(25,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)              #Bump sense Left
 
 sonar = GPIO.PWM(4,500)            #GPIO17 PWM, with 500Hz for smoother sound
-driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
-drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for Left  motor
+#driver = GPIO.PWM(17,100)           #GPIO17 PWM, with 100Hz frequency used for Right motor
+#drivel = GPIO.PWM(27,100)           #GPIO27 PWM, with 100Hz frequency used for Left  motor
 
 pwmr = 0
 pwml = 0
 sonar.start(0)                     #start sonar pwm
-driver.start(pwmr)                 #start pwm right     
-drivel.start(pwml)                 #start pwm left
+#driver.start(pwmr)                 #start pwm right     
+#drivel.start(pwml)                 #start pwm left
 lowt = 90                          # sonar low tone
 
 
@@ -29,132 +29,65 @@ def forward():                                   #speed up to top speed
     print ("Speed up forward")
     GPIO.output(22,GPIO.LOW)                     #reverse triggers off
     GPIO.output(23,GPIO.LOW)
-    global pwmr
-    global pwml
-    for x in range (99):                          
-       if pwmr < 100:
-              pwmr += 1
-              pwml += 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 1 millisecond
+    GPIO.output(27,GPIO.HIGH)
+    GPIO.output(17,GPIO.HIGH)
+    
 
-
-def fstop():                                     #slow to a stop
-    print ("Slow down forward")
-    global pwmr
-    global pwml
-    for x in range (99):                          #execute loop for 60000 times, x being incremented from 0 to 99.
-      if pwmr > 0:
-              pwmr -= 1
-              pwml -= 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 1 millisecond
-
-def rstop():
-    print ("Slow down reverse")
-    global pwmr
-    global pwml
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 60000.
-      if pwmr > 0:
-              pwmr -= 1
-              pwml -= 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 1 millisecond
-    GPIO.output(22,GPIO.LOW)
+def stop():                                     #slow to a stop
+    print ("Stop")
+    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
     GPIO.output(23,GPIO.LOW)
+    GPIO.output(27,GPIO.LOW)
+    GPIO.output(17,GPIO.LOW)                          #sleep for 1 millisecond
       
 def reverse():                                   #Reverse top speed
     print ("Reverse")
     GPIO.output(22,GPIO.HIGH)
     GPIO.output(23,GPIO.HIGH)
-    global pwmr
-    global pwml
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
-      if pwmr < 100:
-              pwmr += 1
-              pwml += 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.001)                           #sleep for 1 millisecond
+    GPIO.output(27,GPIO.HIGH)
+    GPIO.output(17,GPIO.HIGH)                           #sleep for 1 millisecond
 
 def rightpivot():
     print ("Turn right")
-    global pwmr
-    global pwml
     GPIO.output(22,GPIO.HIGH)
-    pwmr = 0
-    pwml = 0
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
-      if pwmr < 100:
-              pwmr += 1
-              pwml += 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)
-         
-def rightstop():
-    print ("Stop right turn")
-    global pwmr
-    global pwml
-    GPIO.output(22,GPIO.HIGH)
-    pwmr = 99
-    pwml = 99
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
-       if pwmr > 0:
-              pwmr -= 1
-              pwml -= 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)
-      
-    GPIO.output(22,GPIO.LOW)
+    GPIO.output(23,GPIO.LOW)                     #reverse triggers off
+    GPIO.output(27,GPIO.HIGH)
+    GPIO.output(17,GPIO.HIGH)
+              
    
 def leftpivot():
-    print ("Turn left then stop")
-    global pwmr
-    global pwml
+    print ("Turn left")
     GPIO.output(23,GPIO.HIGH)
-    pwmr = 0
-    pwml = 0
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
-      if pwmr < 100:
-              pwmr += 1
-              pwml += 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)
-    for x in range (99):                          #execute loop for 99 times, x being incremented from 0 to 99.
-       if pwmr > 0:
-              pwmr -= 1
-              pwml -= 1
-              driver.ChangeDutyCycle(pwmr)               #change duty cycle for varying the PWM.
-              drivel.ChangeDutyCycle(pwml)
-       time.sleep(0.01)
+    GPIO.output(22,GPIO.LOW)                     #reverse triggers off
+    GPIO.output(27,GPIO.HIGH)
+    GPIO.output(17,GPIO.HIGH)
+    
       
 def bumpright(channel):   
     print ("Right Bumper")
     #fstop()
     reverse()
-    time.sleep(.6)
-    rstop()
-    time.sleep(.6)
+    time.sleep(1)
+    stop()
+    time.sleep(1)
     leftpivot()
+    time.sleep(1)
+    stop()
     print ("done") 
 
 def bumpleft(channel):
     print ("Left Bumper")
     #fstop()
     reverse()
-    time.sleep(.6)
-    rstop()
-    time.sleep(.6)
+    time.sleep(1)
+    stop()
+    time.sleep(1)
     rightpivot()
+    time.sleep(1)
+    stop()
     print ("done")
 
-GPIO.add_event_detect(24, GPIO.RISING, callback=bumpright, bouncetime=3)
+GPIO.add_event_detect(24, GPIO.FALLING, callback=bumpright, bouncetime=3)
 GPIO.add_event_detect(25, GPIO.FALLING, callback=bumpleft, bouncetime=3)
 
 sonar.ChangeDutyCycle(lowt)
@@ -165,15 +98,7 @@ print ("Sonar test successful")
 for x in range (1):
     forward()
     time.sleep(1)
-    fstop()
-    time.sleep(1)
-    reverse()
-    time.sleep(1)
-    rstop()
-    time.sleep(1)
-    rightpivot()
-    time.sleep(1)
-    leftpivot()
+    stop()
     print ("done")
     time.sleep(1)
     sonar.ChangeDutyCycle(lowt)
@@ -187,4 +112,4 @@ for x in range (1):
 
 while True:
        #forward()
-       time.sleep(.1)
+       time.sleep(1)
