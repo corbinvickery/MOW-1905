@@ -124,6 +124,11 @@ for x in range (1):
     time.sleep(.1)
 
 while True:
+<<<<<<< HEAD
        #forward()
        time.sleep(1)
      
+=======
+       forward()
+       time.sleep(1)
+>>>>>>> 6a8af5009d5b4b2a01ac39c9e236647487009538
