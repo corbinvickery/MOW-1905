@@ -71,6 +71,7 @@ def leftpivot():
       
 def bumpright(channel):   
     print ("Right Bump")
+    #stop interupt
     stop()
     reverse()
     time.sleep(1)
@@ -82,6 +83,7 @@ def bumpright(channel):
     time.sleep(1)
     print ("Done")
     forward()
+    #restart interupt
     return
  
 
