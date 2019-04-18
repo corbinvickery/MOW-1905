@@ -26,7 +26,7 @@ lowt = 90                          # sonar low tone
 
 
 def forward():                                   #speed up to top speed
-    print ("Speed up forward")
+    print ("Forward")
     GPIO.output(22,GPIO.HIGH)                     #reverse triggers off
     GPIO.output(23,GPIO.HIGH)
     GPIO.output(27,GPIO.HIGH)
@@ -52,7 +52,7 @@ def reverse():                                   #Reverse top speed
     return                      
 
 def rightpivot():
-    print ("Turn right")
+    print ("Right")
     GPIO.output(22,GPIO.LOW)
     GPIO.output(23,GPIO.HIGH)                                  #reverse triggers off
     GPIO.output(27,GPIO.HIGH)
@@ -61,7 +61,7 @@ def rightpivot():
               
    
 def leftpivot():
-    print ("Turn left")
+    print ("Left")
     GPIO.output(23,GPIO.LOW)
     GPIO.output(22,GPIO.HIGH)  
     GPIO.output(27,GPIO.HIGH)
@@ -70,7 +70,7 @@ def leftpivot():
     
       
 def bumpright(channel):   
-    print ("Right Bumper")
+    print ("Right Bump")
     stop()
     reverse()
     time.sleep(1)
@@ -86,7 +86,7 @@ def bumpright(channel):
  
 
 def bumpleft(channel):
-    print ("Left Bumper")
+    print ("Left Bump")
     stop()
     reverse()
     time.sleep(1)
