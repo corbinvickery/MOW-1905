@@ -124,5 +124,5 @@ for x in range (1):
     time.sleep(.1)
 
 while True:
-       forward()
        time.sleep(1)
+       #forward()
