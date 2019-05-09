@@ -1,7 +1,8 @@
 #Used to bump and then turn
 import time
 import RPi.GPIO as GPIO
-
+#THIS DEMO version of BumpTurn is simply removing the autonomous loop and just runs for a couple seconds
+# to show how the sensor inputs work. Turns and drives a short while before stopping and waiting for next input
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
